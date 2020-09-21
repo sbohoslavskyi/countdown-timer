@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Bitter:wght@800&display=swap');
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+}
+
+.countdown-timer ul {
+    display: flex;
+    margin: 0;
+    padding: 30px;
+}
+
+.countdown-timer ul li {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.countdown-timer ul li:last-child {
+    list-style: none;
+    margin-right: 0;
+}
+
+.countdown-timer-item {
+    font-family: 'Bitter', serif;
+    font-size: 4em;
+    font-weight: 800;
+    color: white;
+    background-color: #ffffff4f;
+    padding: 45px;
+    box-shadow: 0 0 15px 2px #12311278;
+}
+
+.countdown-timer-item__first {
+    border-radius: 35px 0 0 35px;
+}
+
+.countdown-timer-item__last {
+    border-radius: 0 35px 35px 0;
+}
+
+.countdown-timer-capture {
+    font-family: 'Arimo', sans-serif;
+    font-size: 1.8em;
+    color: #ffffffc7;
+    text-align: center;
+    padding-top: 5px;
+}
