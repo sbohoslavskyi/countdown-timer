@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import CountdownTimer from "../CountdownTimer";
 import Header from "../Header";
+import Footer from "../Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <main>
         <CountdownTimer />
       </main>
+      <Footer />
     </div>
   );
 }
