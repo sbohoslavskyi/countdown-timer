@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 
 import './CountdownTimer.css';
 
@@ -7,7 +6,7 @@ class CountdownTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      remainTime: this.calculateRemainTime()
+      remainTime: this.calculateTimeRemaining()
     }
   }
 
@@ -19,13 +18,23 @@ class CountdownTimer extends Component {
     clearInterval(this.intervalId);
   }
 
-  calculateRemainTime() {
-    return moment('01-01-2021', 'DD-MM-YYYY').subtract(new Date().getTime(), 'milliseconds');
+  calculateTimeRemaining() {
+    const total = Date.parse(new Date(2021, 1, 1)) - Date.parse(new Date());
+    const seconds = Math.floor( (total/1000) % 60 );
+    const minutes = Math.floor( (total/1000/60) % 60 );
+    const hours = Math.floor( (total/(1000*60*60)) % 24 );
+    const days = Math.floor( total/(1000*60*60*24) );
+
+    return {
+      days,
+      hours,
+      minutes,
+      seconds
+    };
   }
 
   tick() {
-    this.setState({remainTime: this.calculateRemainTime()})
-    console.log(this.state.remainTime.format('DD HH:mm:ss'));
+    this.setState({remainTime: this.calculateTimeRemaining()});
   }
 
   render() {
@@ -34,25 +43,25 @@ class CountdownTimer extends Component {
         <ul>
           <li>
             <div className="countdown-timer-item countdown-timer-item__first">
-              {this.state.remainTime.format('DD')}
+              {this.state.remainTime.days}
             </div>
             <div className="countdown-timer-capture">Days</div>
           </li>
           <li>
             <div className="countdown-timer-item">
-              {this.state.remainTime.format('HH')}
+              {this.state.remainTime.hours}
             </div>
             <div className="countdown-timer-capture">Hours</div>
           </li>
           <li>
             <div className="countdown-timer-item">
-              {this.state.remainTime.format('mm')}
+              {this.state.remainTime.minutes}
             </div>
             <div className="countdown-timer-capture">Minutes</div>
           </li>
           <li>
             <div className="countdown-timer-item countdown-timer-item__last">
-              {this.state.remainTime.format('ss')}
+              {this.state.remainTime.seconds}
             </div>
             <div className="countdown-timer-capture">Seconds</div>
           </li>
